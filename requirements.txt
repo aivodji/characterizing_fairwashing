@@ -1,0 +1,12 @@
+pandas
+numpy
+sklearn
+requests
+networkx==1.11
+hyperopt
+#tensorflow
+xgboost
+mlxtend  
+faircorels==0.7
+#mpi4py
+fairlearn==0.6.2

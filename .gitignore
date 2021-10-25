@@ -1,0 +1,17 @@
+*.pyc
+mpi_*
+push.sh
+download_results*
+
+output*
+analysis/results
+analysis/plotting_scripts/results
+
+quantifying_fairwashing/results_*
+quantifying_fairwashing/plotting_scripts/results_*
+results/
+results_*
+
+
+
+

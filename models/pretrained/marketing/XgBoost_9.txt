@@ -1,0 +1,4 @@
+Accuracy train: 0.9139812230398376
+Accuracy test: 0.9138946128937298
+Accuracy sg: 0.9100677068001177
+Model params: {'colsample_bylevel': 0.6338419910365272, 'colsample_bytree': 0.9972010691795652, 'gamma': 0.00021517527607032286, 'learning_rate': 0.0006592232111530559, 'max_depth': 5, 'min_child_weight': 29, 'n_estimators': 69, 'reg_alpha': 0.000103517993025709, 'reg_lambda': 1.390396436321018, 'subsample': 0.6518230045376546}

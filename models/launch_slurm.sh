@@ -4,4 +4,4 @@
 #SBATCH --mem-per-cpu=8G
 
 export TMPDIR=/tmp
-xargs -P 160 -n 1 -d "\n" -a sweeps.sh bash -c
+xargs -P 40 -n 1 -d "\n" -a sweeps.sh bash -c

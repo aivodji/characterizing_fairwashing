@@ -24,11 +24,11 @@ pareto_plot <- function(dataset, title, explainer) {
     input_file              <- sprintf("../results/pareto_merged/%s/%s_%s.csv", dataset, dataset, explainer)
     input_file_baseline     <- sprintf("../results/unfairness_bbox/%s.csv", dataset)
 
-    save_path <- "./results/pareto"
+    save_path <- "./graphs/pareto"
     
-    dir.create(save_path, showWarnings = FALSE)
+    dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
 
-    output_file <- sprintf("%s/%s_%s.png", save_path, dataset, explainer)
+    output_file <- sprintf("%s/%s_%s.pdf", save_path, dataset, explainer)
 
     df                      <- read.csv(input_file, header=T)
     df_baseline             <- read.csv(input_file_baseline, header=T)
@@ -103,9 +103,7 @@ explainer_map[["lm"]]   <- "Logistic Regression"
 explainer_map[["dt"]]   <- "Decision Tree"
 
 datasets <- c("adult_income", "compas", "default_credit", "marketing")
-#explainers <- c("rl", "lm", "dt")
-explainers <- c("lm")
-
+explainers <- c("rl", "lm", "dt")
 for (dataset in datasets){
     for (explainer in explainers){
             pareto_plot(dataset, sprintf("%s -- %s", dataset_map[[dataset]], explainer_map[[explainer]]), explainer)

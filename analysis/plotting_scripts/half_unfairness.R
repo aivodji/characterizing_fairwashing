@@ -15,9 +15,9 @@ text_color = "black"
 half_unfairness <- function(group, explainer, title) {
     input_file     <- sprintf("../results/half_unfairness/%s_%s.csv", group, explainer)
 
-    save_path <- "./results/half_unfairness"
+    save_path <- "./graphs/half_unfairness"
     
-    dir.create(save_path, showWarnings = FALSE)
+    dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
 
     output_file <- sprintf("%s/%s_%s.pdf", save_path, group, explainer)
 

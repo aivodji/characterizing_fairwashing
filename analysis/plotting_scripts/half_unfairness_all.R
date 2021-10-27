@@ -15,11 +15,11 @@ text_color = "black"
 half_unfairness <- function(group, explainer, title) {
     input_file     <- sprintf("../results/half_unfairness/%s_all_bbox_%s.csv", group, explainer)
 
-    save_path <- "./results/half_unfairness"
+    save_path <- "./graphs/half_unfairness"
     
-    dir.create(save_path, showWarnings = FALSE)
+    dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
 
-    output_file <- sprintf("%s/%s_all_bbox_%s.png", save_path, group, explainer)
+    output_file <- sprintf("%s/%s_all_bbox_%s.pdf", save_path, group, explainer)
 
 
     df  <- read.csv(input_file, header=T)
@@ -74,8 +74,7 @@ explainer_map[["lm"]]   <- "Logistic Regression"
 explainer_map[["dt"]]   <- "Decision Tree"
 
 groups <- c("sg")
-#explainers <- c("rl", "lm", "dt")
-explainers <- c("lm")
+explainers <- c("rl", "lm", "dt")
 
 for (group in groups){
     for (explainer in explainers){

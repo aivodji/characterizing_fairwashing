@@ -44,7 +44,7 @@ def compute_front(df_average, output_file, eval_group):
     errors     = 1.0 - df_average['fidelity_{}_mean'.format(eval_group)]
     unfairness = df_average['unfairness_{}_mean'.format(eval_group)]
     fidelity_std   = df_average['fidelity_{}_std'.format(eval_group)]
-    fidelity_gap_sg_mean = df_average['fidelity_gap_sg_mean']
+    #fidelity_gap_sg_mean = df_average['fidelity_gap_sg_mean']
 
     pareto_input = [[error, unf] for (error, unf) in zip(errors, unfairness)]
     pareto_input = np.array(pareto_input)
@@ -55,7 +55,7 @@ def compute_front(df_average, output_file, eval_group):
     df['fidelity']         =  [1.0 - errors[i] for i in xrange(len(errors)) if msk[i]]
     df['unfairness']       =  [unfairness[i] for i in xrange(len(errors)) if msk[i]]
     df['fidelity_std']     =  [fidelity_std[i] for i in xrange(len(errors)) if msk[i]]
-    df['fidelity_gap_sg_mean']     =  [fidelity_gap_sg_mean[i] for i in xrange(len(errors)) if msk[i]]
+    #df['fidelity_gap_sg_mean']     =  [fidelity_gap_sg_mean[i] for i in xrange(len(errors)) if msk[i]]
 
     df['group']            = [eval_group_map[eval_group] for i in xrange(len(errors)) if msk[i]]
 

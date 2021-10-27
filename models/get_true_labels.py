@@ -34,7 +34,7 @@ def get_labels(data, rseed):
     labeldir = './true_labels/{}'.format(dataset)
     
     if not os.path.exists(labeldir):
-        os.mkdir(labeldir)  
+        os.makedirs(labeldir, exist_ok=True)  
 
     #filenames
     suffix = 'OneHot'

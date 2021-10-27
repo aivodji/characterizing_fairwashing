@@ -59,9 +59,9 @@ def compute_average(dataset, model_class, metric, explainer):
             'accuracy_sg_mean'          : np.mean([df_list[j].iloc[index]['accuracy_sg'] for j in range(10)]),
             'accuracy_sg_std'           : np.std([df_list[j].iloc[index]['accuracy_sg'] for j in range(10)]),
             'accuracy_test_mean'        : np.mean([df_list[j].iloc[index]['accuracy_test'] for j in range(10)]),
-            'accuracy_test_std'         : np.std([df_list[j].iloc[index]['accuracy_test'] for j in range(10)]),
-            'fidelity_gap_sg_mean'      : np.mean([df_list[j].iloc[index]['fidelity_gap_sg'] for j in range(10)]),
-            'fidelity_gap_sg_std'       : np.std([df_list[j].iloc[index]['fidelity_gap_sg'] for j in range(10)])
+            'accuracy_test_std'         : np.std([df_list[j].iloc[index]['accuracy_test'] for j in range(10)])
+            #'fidelity_gap_sg_mean'      : np.mean([df_list[j].iloc[index]['fidelity_gap_sg'] for j in range(10)]),
+            #'fidelity_gap_sg_std'       : np.std([df_list[j].iloc[index]['fidelity_gap_sg'] for j in range(10)])
         }
         
         row_list.append(row)

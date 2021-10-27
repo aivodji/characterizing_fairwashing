@@ -8,23 +8,23 @@ metrics=(1 3 4 5)
 
 
 # compute the unfairness of the black-box
-
-python unfairness_bbox.py 
+#python unfairness_bbox.py 
 
 # compute average trade-offs over the seed
+: <<'END'
 for dataset in "${datasets[@]}" 
     do
         for metric in ${metrics[@]}
             do
                 for model in "${models[@]}" 
                     do	
-                        #python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
+                        python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
                         python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=lm
-                        #python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=dt
+                        python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=dt
                     done
             done
     done
-
+END
 # compute pareto front
 for dataset in "${datasets[@]}" 
     do
@@ -32,9 +32,9 @@ for dataset in "${datasets[@]}"
             do
                 for model in "${models[@]}" 
                     do	
-                        #python compute_pareto.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
+                        python compute_pareto.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
                         python compute_pareto.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=lm
-                        #python compute_pareto.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=dt
+                        python compute_pareto.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=dt
                     done
             done
     done
@@ -43,12 +43,14 @@ for dataset in "${datasets[@]}"
 # merge results 
 for dataset in "${datasets[@]}" 
     do
-        #python merge_pareto.py --dataset=$dataset --explainer=rl
+        python merge_pareto.py --dataset=$dataset --explainer=rl
         python merge_pareto.py --dataset=$dataset --explainer=lm
-        #python merge_pareto.py --dataset=$dataset --explainer=dt     
+        python merge_pareto.py --dataset=$dataset --explainer=dt     
     done
 
-: <<'END'
+
+
+
 
 ## compute label agreement between teacher and student models
 python label_agreements_bbox.py
@@ -61,7 +63,7 @@ for dataset in "${datasets[@]}"
             do
                 for model in "${models[@]}" 
                     do	
-                        #python average_transferabily.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
+                        python average_transferabily.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
                         python average_transferabily.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=dt
                         python average_transferabily.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=lm
                         
@@ -81,22 +83,6 @@ do
         python compute_transferability.py --dataset=$dataset --epsilon=$epsilon --explainer=lm
     done
 done
-
-
-# compute average trade-off
-for dataset in "${datasets[@]}" 
-    do
-        for metric in ${metrics[@]}
-            do
-                for model in "${models[@]}" 
-                    do	
-                        python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=rl
-                        python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=dt
-                        python average_trade_off.py --dataset=$dataset --metric=$metric --model_class=$model --explainer=lm
-                        
-                    done
-            done
-    done
 
 
 ## fidelity of unconstrained explainers
@@ -124,7 +110,8 @@ for explainer in "dt" "lm" "rl"
 # Other analysis
 
 ## summary of black-box models, results save in latex tables: in results/latex/perfs.tex
-python summary.py
-python latex_summary.py
+#python summary.py
+#python latex_summary.py
 
+: <<'END'
 END

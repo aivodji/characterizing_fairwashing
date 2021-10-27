@@ -1,4 +1,0 @@
-Accuracy train: 0.695631067961165
-Accuracy test: 0.683743842364532
-Accuracy sg: 0.6600985221674877
-Model params: {'bootstrap': True, 'criterion': 'entropy', 'max_depth': 5, 'max_features': 0.7, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 33}

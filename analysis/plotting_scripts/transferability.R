@@ -23,9 +23,9 @@ text_color = "black"
 transfer_plot <- function(dataset, epsilon, title, explainer) {
     input_file     <- sprintf("../results/analysis_transferability/%s/transfer_%s_eps=%s.csv", dataset, explainer, epsilon)
 
-    save_path <- "./results/transferability"
+    save_path <- "./graphs/transferability"
     
-    dir.create(save_path, showWarnings = FALSE)
+    dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
 
     output_file <- sprintf("%s/%s_%s_eps=%s.pdf", save_path, dataset, explainer, epsilon)
 
@@ -83,7 +83,6 @@ explainer_map[["lm"]]   <- "Logistic Regression"
 explainer_map[["dt"]]   <- "Decision Tree"
 
 epsilons <- c(0.03, 0.05, 0.1)
-#epsilons <- c(0.05)
 datasets <- c("adult_income", "compas", "default_credit", "marketing")
 explainers <- c("rl", "lm", "dt")
 

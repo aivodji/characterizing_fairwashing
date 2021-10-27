@@ -88,7 +88,7 @@ def get_labels(dataset, model_class, rseed):
     labeldir = './labels/{}/'.format(dataset)
     
     if not os.path.exists(labeldir):
-        os.mkdir(labeldir)
+        os.makedirs(labeldir, exist_ok=True)
    
 
     def get_predictions(model_class, X_train, y_train, X_test, y_test, X_sg, y_sg):

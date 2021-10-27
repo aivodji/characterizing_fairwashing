@@ -1,4 +1,0 @@
-Accuracy train: 0.6859223300970874
-Accuracy test: 0.6640394088669951
-Accuracy sg: 0.677832512315271
-Model params: {'algorithm': 'SAMME.R', 'learning_rate': 0.22322325792946565, 'n_estimators': 30}

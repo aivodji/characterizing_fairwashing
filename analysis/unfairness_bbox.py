@@ -291,7 +291,8 @@ if __name__ == '__main__':
     # inputs
     datasets = ['adult_income', 'compas', 'default_credit', 'marketing']
     model_classes = ['AdaBoost','DNN', 'RF', 'XgBoost']
-    
+    save_dir = './results/unfairness_bbox/'
+    os.makedirs(save_dir, exist_ok=True)
 
 
     for dataset in datasets:
@@ -312,7 +313,7 @@ if __name__ == '__main__':
                 row_list.append(dd)
 
         
-        filename = './results/unfairness_bbox/{}.csv'.format(dataset)
+        filename = '{}{}.csv'.format(save_dir, dataset)
         
 
         df = pd.DataFrame(row_list)

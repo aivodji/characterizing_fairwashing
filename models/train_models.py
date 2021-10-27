@@ -284,7 +284,7 @@ if __name__ == '__main__':
     outdir = './pretrained/{}/'.format(dataset)
 
     if not os.path.exists(outdir):
-        os.mkdir(outdir)
+        os.makedirs(outdir, exist_ok=True)
     
     
     

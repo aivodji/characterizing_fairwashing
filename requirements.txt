@@ -3,7 +3,7 @@ numpy
 sklearn
 requests
 networkx==1.11
-hyperopt
+hyperopt==0.1.2
 #tensorflow
 xgboost
 mlxtend  

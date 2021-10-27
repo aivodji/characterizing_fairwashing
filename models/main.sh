@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#datasets=(adult_income compas default_credit marketing)
-datasets=(adult_income)
+datasets=(adult_income compas default_credit marketing)
 models=(AdaBoost DNN RF XgBoost)
 rseed=(0 1 2 3 4 5 6 7 8 9)
 

@@ -13,7 +13,7 @@ for dataset in "${datasets[@]}"
                 for model in "${models[@]}" 
                     do	
                         # pretraining the black-box model
-                        #python train_models.py --dataset=$dataset --model_class=$model --nbr_evals=100 --rseed=$r
+                        #python train_models.py --dataset=$dataset --model_class=$model --nbr_evals=50 --rseed=$r
                         # getting the predictions for the suing group and the test set
                         sleep 2
                         python get_labels.py --dataset=$dataset --model_class=$model --rseed=$r

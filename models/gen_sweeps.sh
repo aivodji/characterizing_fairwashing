@@ -12,7 +12,7 @@ for dataset in "${datasets[@]}"
                 for model in "${models[@]}" 
                     do	
                         # pretraining the black-box model
-                        echo "python train_models.py --dataset=${dataset} --model_class=${model} --nbr_evals=100 --rseed=${r}"
+                        echo "python train_models.py --dataset=${dataset} --model_class=${model} --nbr_evals=50 --rseed=${r}"
                         
                     done
             done

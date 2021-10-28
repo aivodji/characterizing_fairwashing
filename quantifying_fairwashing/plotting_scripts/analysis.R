@@ -1,4 +1,5 @@
 library(ggplot2)
+library(dplyr)
 library(scales)
 library(ggpubr)
 library(dict)
@@ -6,6 +7,9 @@ source("theme.R")
 
 line_size <- 1.5
 alpha_line <- 0.75
+point_size_hline <- 0.3
+
+
 
 
 fig_width       <- 7
@@ -14,22 +18,29 @@ fig_height      <- 5
 basesize <- 15
 
 
-unfairness_range_plot <- function(dataset, rseed, model_class, title) {
+unfairness_range_plot <- function(dataset, rseed, mdl_class, title) {
     
-    input_file              <- sprintf("../results/%s_%s_%s.csv", dataset, model_class, rseed)
+    input_file              <- sprintf("../results/%s_%s_%s.csv", dataset, mdl_class, rseed)
+    input_file_baseline     <- sprintf("../../analysis/results/unfairness_bbox/%s.csv", dataset)
 
-    save_path <- "./results/unfairness_range"
+    save_path <- "./graphs/unfairness_range"
     
-    dir.create(save_path, showWarnings = FALSE)
+    dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
 
-    output_file <- sprintf("%s/%s_%s_%s.png", save_path, dataset, model_class, rseed)
+    output_file <- sprintf("%s/%s_%s_%s.pdf", save_path, dataset, mdl_class, rseed)
 
     df                      <- read.csv(input_file, header=T)
+    df_baseline             <- read.csv(input_file_baseline, header=T)
+
+    df_baseline  <- df_baseline %>% 
+                            filter(metric == "SP" & group == "Members" & model_class == mdl_class)
+
 
     pp <- ggplot(df, aes(x = factor(round(fidelity_explainer, 4)))) + 
 
 
     geom_errorbar(aes(ymin = min_disp, ymax = max_disp), colour = "#0e5357", size=line_size, width = 0.25) + 
+    geom_hline(data = df_baseline, mapping = aes(yintercept = unfairness), size=point_size_hline, linetype = "dashed") +
 
 
     theme_light_v2(base_size=basesize) + 
